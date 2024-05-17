@@ -115,6 +115,7 @@ class Flappy:
         self.player.set_mode(PlayerMode.CRASH)
         self.pipes.stop()
         self.floor.stop()
+        print('test')
 
         while True:
             for event in pygame.event.get():
