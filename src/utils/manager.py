@@ -15,6 +15,6 @@ class Manager:
             for f in files:
                 k = f.split(".")[0]
                 self.assets_dictionary[k] = pygame.image.load(os.path.join(path, f))
-
+                # print(self.assets_dictionary)
 
 Manager()
