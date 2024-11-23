@@ -6,6 +6,7 @@ import pygame
 from src.utils.settings import Settings
 from src.utils.manager import Manager
 from src.entities.background import Background
+from src.entities.words import Words
 
 
 class Game:
@@ -18,6 +19,9 @@ class Game:
         self.manager = Manager()
 
         self.background = Background(self.screen)
+        self.words = Words(self.background.image)
+
+        self.stats = 0  #0=welcome,1=run,2=gameover
 
     def handle_events(self):
         for event in pygame.event.get():
@@ -28,18 +32,36 @@ class Game:
                 if event.key == pygame.K_q:
                     pygame.quit()
                     sys.exit()
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                #响应鼠标点击
+                pass
 
-    def draw_background(self):
+    def update_screen(self):
         self.background.draw()
+
+        pygame.display.flip()
+        if self.stats == 0:
+            self.words.draw_M()
+            pass
+            #画开始界面
+        elif self.stats == 1:
+            pass
+            # 画游戏界面的物品
+        elif self.stats == 2:
+            self.words.draw_GM()
+
+            pass
+            #画gameover
 
 
     def main_loop(self):
         while True:
             self.handle_events()
-            self.draw_background()
+            self.update_screen()
+
             self.clock.tick(self.settings.fps)
 
-            pygame.display.flip()
+
 
 
     def initialize(self):

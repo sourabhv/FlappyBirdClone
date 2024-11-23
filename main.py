@@ -1,7 +1,6 @@
 import asyncio
 
-import src.main
+from src_old.flappy import Flappy
 
 if __name__ == "__main__":
-    game = src.main.Game()
-    game.main_loop()
+    asyncio.run(Flappy().start())
