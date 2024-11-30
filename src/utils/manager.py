@@ -1,8 +1,6 @@
 import pygame.image
 import os
 
-
-# FILE_ROOT = "F:\\projects\\FlapPyBird\\assets\\sprites\\"
 FILE_ROOT = f"{os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))}/assets/sprites/"
 
 class Manager:
