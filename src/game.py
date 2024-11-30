@@ -7,6 +7,7 @@ from src.utils.settings import Settings
 from src.utils.manager import Manager
 from src.entities.background import Background
 from src.entities.words import Words
+from src.utils.stats import Stats
 
 
 class Game:
@@ -17,11 +18,13 @@ class Game:
         self.screen = pygame.display.set_mode(self.settings.window_size)#改成Screen（）
         self.clock = pygame.time.Clock()
         self.manager = Manager()
+        self.stats = Stats()
+        self.stat = self.stats.stat
 
         self.background = Background(self.screen)
         self.words = Words(self.background.image)
 
-        self.stats = 0  #0=welcome,1=run,2=gameover
+        #self.stats = "gameover"  #0=welcome,1=run,2=gameover
 
     def handle_events(self):
         for event in pygame.event.get():
@@ -40,14 +43,14 @@ class Game:
         self.background.draw()
 
         pygame.display.flip()
-        if self.stats == 0:
+        if self.stat == "welcome":
             self.words.draw_M()
             pass
             #画开始界面
-        elif self.stats == 1:
+        elif self.stat == "run":
             pass
             # 画游戏界面的物品
-        elif self.stats == 2:
+        elif self.stat == "gameover":
             self.words.draw_GM()
 
             pass
