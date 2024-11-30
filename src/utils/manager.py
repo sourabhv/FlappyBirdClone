@@ -2,8 +2,8 @@ import pygame.image
 import os
 
 
-FILE_ROOT = "F:\\projects\\FlapPyBird\\assets\\sprites\\"
-
+# FILE_ROOT = "F:\\projects\\FlapPyBird\\assets\\sprites\\"
+FILE_ROOT = f"{os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))}/assets/sprites/"
 
 class Manager:
     # num0 = pygame.image.load(FILE_ROOT + "0.png")
@@ -21,8 +21,8 @@ class Manager:
         self.background = [pygame.image.load(image.join([FILE_ROOT, ".png"])).convert_alpha()
                       for image in background_name]
 
-        self.gameover = pygame.image.load()
-
+        self.gameover = pygame.image.load(os.path.join(FILE_ROOT, "gameover.png")).convert_alpha()
+        self.message = pygame.image.load(os.path.join(FILE_ROOT, "message.png")).convert_alpha()
 
 
 

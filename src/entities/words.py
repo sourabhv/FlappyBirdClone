@@ -5,11 +5,11 @@ import random
 class Words:
     def __init__(self, display_surface):
         self.display_surface = display_surface
-
-        self.image_GM = pygame.image.load(r"F:\projects\FlapPyBird\assets\sprites\gameover.png").convert_alpha()
+        self.manager = Manager()
+        self.image_GM = self.manager.gameover
         self.rect_GM = pygame.Rect(48, 235, 192, 42)
 
-        self.image_M = pygame.image.load(r"F:\projects\FlapPyBird\assets\sprites\message.png").convert_alpha()
+        self.image_M = self.manager.message
         self.rect_M = pygame.Rect(52, 122.5, 184, 267)
     def draw_GM(self):
         self.display_surface.blit(self.image_GM, self.rect_GM)
