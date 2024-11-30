@@ -10,11 +10,18 @@ class Manager:
         pygame.init()
         pygame.display.set_mode((288, 512))
 
+
+        red_bird_name = ["redbird-downflap", "redbird-midflap", "redbird-upflap"]
+        yellow_bird_name = ["yellowbird-downflap", "yellowbird-midflap", "yellowbird-upflap"]
         blue_bird_name = ["bluebird-downflap", "bluebird-midflap", "bluebird-upflap"]
         background_name = ["background-day", "background-night"]
 
         self.blue_bird = [pygame.image.load(image.join([FILE_ROOT, ".png"])).convert_alpha()
                      for image in blue_bird_name]
+        self.red_bird = [pygame.image.load(image.join([FILE_ROOT, ".png"])).convert_alpha()
+                      for image in red_bird_name]
+        self.yellow_bird = [pygame.image.load(image.join([FILE_ROOT, ".png"])).convert_alpha()
+                         for image in yellow_bird_name]
 
         self.background = [pygame.image.load(image.join([FILE_ROOT, ".png"])).convert_alpha()
                       for image in background_name]
