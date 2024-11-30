@@ -21,7 +21,8 @@ class Manager:
         self.background = [pygame.image.load(image.join([FILE_ROOT, ".png"])).convert_alpha()
                       for image in background_name]
 
-        print(self.blue_bird)
+        self.gameover = pygame.image.load()
+
 
 
 

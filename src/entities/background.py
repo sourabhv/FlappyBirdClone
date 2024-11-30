@@ -1,6 +1,5 @@
 from src.utils.manager import Manager
 import random
-# from src.utils.stats import Stats
 
 class Background:
     def __init__(self, display_surface):

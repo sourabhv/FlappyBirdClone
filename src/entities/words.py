@@ -1,4 +1,7 @@
 import pygame
+from src.utils.manager import Manager
+import random
+
 class Words:
     def __init__(self, display_surface):
         self.display_surface = display_surface
