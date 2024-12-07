@@ -15,12 +15,14 @@ class Manager:
         background_name = ["background-day", "background-night"]
         pipe_name = ["pipe-green", "pipe-red"]
 
-        self.blue_bird = [pygame.image.load(image.join([FILE_ROOT, ".png"])).convert_alpha()
+        blue_bird = [pygame.image.load(image.join([FILE_ROOT, ".png"])).convert_alpha()
                      for image in blue_bird_name]
-        self.red_bird = [pygame.image.load(image.join([FILE_ROOT, ".png"])).convert_alpha()
+        red_bird = [pygame.image.load(image.join([FILE_ROOT, ".png"])).convert_alpha()
                       for image in red_bird_name]
-        self.yellow_bird = [pygame.image.load(image.join([FILE_ROOT, ".png"])).convert_alpha()
+        yellow_bird = [pygame.image.load(image.join([FILE_ROOT, ".png"])).convert_alpha()
                          for image in yellow_bird_name]
+
+        self.birds = [blue_bird, red_bird, yellow_bird]
         self.numbers = [pygame.image.load(image.join([FILE_ROOT, ".png"])).convert_alpha()
                          for image in [str(x) for x in range(10)]]
         self.background = [pygame.image.load(image.join([FILE_ROOT, ".png"])).convert_alpha()

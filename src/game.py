@@ -8,6 +8,7 @@ from src.utils.manager import Manager
 from src.entities.background import Background
 from src.entities.words import Words
 from src.entities.pipe import Pipe
+from src.entities.bird import Bird
 from src.utils.stats import Stats
 
 
@@ -24,12 +25,14 @@ class Game:
         self.stat = self.stats.stat
 
         self.background = Background(self.screen)
-        self.words = Words(self.background.image)
+        self.words = Words(self.screen)
         self.pipe = Pipe(self.screen)
+        self.bird = Bird(self.screen)
         #self.stats = "gameover"  #0=welcome,1=run,2=gameover
 
     def handle_events(self):
         for event in pygame.event.get():
+
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
@@ -39,8 +42,10 @@ class Game:
                     sys.exit()
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 #响应鼠标点击
+                Bird.jump = True
+                Bird.jumpSpeed = 15
+                Bird.gravity = 3
                 print('mouse test')
-                pass
 
     def update_screen(self):
         self.background.draw()
@@ -51,6 +56,8 @@ class Game:
             #画开始界面
         elif self.stat == "run":
             self.pipe.draw()
+            self.bird.birdUpdate()
+            self.bird.createMap()
             # 画游戏界面的物品
         elif self.stat == "gameover":
             self.words.draw_GM()
@@ -64,6 +71,8 @@ class Game:
         while True:
             self.handle_events()
             self.update_screen()
+
+
 
             self.clock.tick(self.settings.fps)
 

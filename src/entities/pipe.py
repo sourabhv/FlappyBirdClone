@@ -15,8 +15,9 @@ class Pipe:
 
     def draw(self):
         self.display_surface.blit(self.image_up, self.rect)
-        self.display_surface.blit(self.image_down, self.rect.move(0, -(320 + random.randint(80,300))))
+        #self.display_surface.blit(self.image_down, self.rect.move(0, -(320 + random.randint(80,300))))
 
-class Pipes(Pipe):
-    super().__init__()
+# class Pipes(Pipe):
+#     super().__init__()
+#
 
