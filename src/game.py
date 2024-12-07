@@ -1,5 +1,4 @@
 import sys
-
 import pygame
 
 #from src.utils.screen import Screen
