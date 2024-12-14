@@ -12,6 +12,7 @@ class Background:
         self.rect = pygame.Rect(0, 400, 336, 112)
 
     def draw(self):
+        self.stat = Stats().stat
         #画背景
         self.display_surface.blit(self.image, self.image.get_rect())
         #画地面

@@ -26,7 +26,7 @@ class Game:
         self.background = Background(self.screen)
         self.words = Words(self.screen)
         self.pipe = Pipe(self.screen)
-        self.bird = Bird(self.screen)
+        self.bird = Bird(self.screen, self.pipe.rect_list_all)
         #self.stats = "gameover"  #0=welcome,1=run,2=gameover
 
     def handle_events(self):
@@ -41,9 +41,10 @@ class Game:
                     sys.exit()
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 #响应鼠标点击
-                Bird.jump = True
-                Bird.jumpSpeed = 15
-                Bird.gravity = 3
+                if not self.bird.dead:
+                    self.stat = "run"
+                self.bird.jump = True
+                self.bird.jumpSpeed = -1
                 print('mouse test')
 
     def update_screen(self):
@@ -51,26 +52,31 @@ class Game:
 
         if self.stat == "welcome":
             self.words.draw_M()
-            pass
+
             #画开始界面
         elif self.stat == "run":
             self.pipe.draw()
+            self.pipe.update()
             self.bird.birdUpdate()
             self.bird.createMap()
+            self.bird.checkDead(self.pipe.rect_list_all)
             # 画游戏界面的物品
         elif self.stat == "gameover":
+            self.pipe.draw()
+            self.bird.createMap()
             self.words.draw_GM()
 
-            pass
             #画gameover
         pygame.display.flip()
 
 
     def main_loop(self):
         while True:
+
             self.handle_events()
             self.update_screen()
-
+            if self.bird.dead:
+                self.stat = "gameover"
 
 
             self.clock.tick(self.settings.fps)
