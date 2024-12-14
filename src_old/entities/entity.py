@@ -63,7 +63,7 @@ class Entity:
         rect = self.rect
         if self.config.debug:
             pygame.draw.rect(self.config.screen, (255, 0, 0), rect, 1)
-            # write x and y at top of rect
+            # write x and y at top of rect_GM
             font = pygame.font.SysFont("Arial", 13, True)
             text = font.render(
                 f"{self.x:.1f}, {self.y:.1f}, {self.w:.1f}, {self.h:.1f}",
